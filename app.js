@@ -6,6 +6,8 @@ import cors from 'cors'
 import morgan from 'morgan'
 
 //conexão com o DB
+import connect from './db/index.js'
+connect()
 
 //iniciar o app
 const app = express()
