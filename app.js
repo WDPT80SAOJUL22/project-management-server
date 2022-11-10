@@ -6,6 +6,8 @@ import cors from 'cors'
 import morgan from 'morgan'
 import handleError from './error-handling/index.js'
 import authRoutes from './routes/auth.routes.js'
+import authMiddleware from './middlewares/auth.middleware.js'
+import projectRoutes from './routes/project.routes.js'
 
 //conexão com o DB
 import connect from './db/index.js'
@@ -26,6 +28,12 @@ app.use(express.json())
 // Rotas
 
 app.use('/', authRoutes)
+
+//middleware de autenticação
+app.use(authMiddleware)
+
+// Rotas privadas
+app.use('/', projectRoutes)
 
 //configurações de erro
 handleError(app)
